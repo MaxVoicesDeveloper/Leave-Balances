@@ -1,0 +1,9 @@
+.button-bar {
+   border-radius: var(--radius-sm);
+   padding: 6px 18px;
+}
+
+.button-bar.active {
+    background: var(--color-primary);
+    color: var(--color-counter);
+};

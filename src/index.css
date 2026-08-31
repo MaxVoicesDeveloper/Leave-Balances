@@ -1,1 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+:root {
+  --color-background: #ffffff;
+  --color-sidebar: #f8f9fa;
+  --color-foreground: #171717;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-primary: #F0E1FD;
+  --text-secondary: #737373;
+  --text-primary: #1D1D1F;
+  --primary-gradient: linear-gradient(90deg, #9134EA 0%, #5246E6 100%);
+  --color-counter: #A855F7;
+  --border-color: #F0F0F0;
+  --bg-main: #F5F5F5;
+  --radius-sm: 4px;
+  --radius-md: 9px; 
+  --radius-lg: 12px;
+  --width-icon: 41px;
+  --sidebar-width: 333px;
+  --content-width: 1057px;
+  --spacing-page: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Urbanist', sans-serif;
+}
