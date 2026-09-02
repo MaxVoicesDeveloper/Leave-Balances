@@ -34,11 +34,19 @@ const Table = ({ employees, collapseVersion }: TableProps) => {
         return value === null ? "0.00" : value.toFixed(2);
     };
 
+    // Collapse all
     useEffect(() => {
         setIsLabelOpen(false);
         setOpenGroups([]);
         setOpenSubgroups([]);
     }, [collapseVersion]);
+
+
+    useEffect(() => {
+        setIsLabelOpen(true);
+        setOpenGroups([0, 1]);
+        setOpenSubgroups(["0-0", "0-1", "1-0"]);
+    }, [employees]);
 
     const groups = [
         {
@@ -135,7 +143,9 @@ const Table = ({ employees, collapseVersion }: TableProps) => {
                                         (subgroup, subgroupIndex) => {
                                             const subgroupKey = `${groupIndex}-${subgroupIndex}`;
                                             const isSubgroupOpen =
-                                                openSubgroups.includes(subgroupKey);
+                                                openSubgroups.includes(
+                                                    subgroupKey
+                                                );
 
                                             return (
                                                 <Fragment key={subgroupKey}>
@@ -159,7 +169,9 @@ const Table = ({ employees, collapseVersion }: TableProps) => {
                                                                 >
                                                                     ⌃
                                                                 </span>
-                                                                {subgroup.label}
+                                                                {
+                                                                    subgroup.label
+                                                                }
                                                             </button>
                                                         </td>
                                                     </tr>
