@@ -1,16 +1,29 @@
 const SubSidebar = () => {
-    return(
+    return (
         <>
-         <div className="subSidebar flex h-full flex-col gap-3 bg-[var(--color-sidebar)] p-4 w-100 rounded-[var(--radius-md)] border border-[var(--border-color)]">
-            <h1 className="text-[var(--text-primary)] text-[var(--text-primary)] text-[24px] font-semibold">Leaves<br/> and Attendance</h1>
-            <div className="menu-items">
-                <div className="menu-item text-[var(--text-primary)] font-medium p-2 bg-[var(--color-primary)] rounded-[var(--radius-md)]">Leave Balances</div>
-                <div className="menu-item p-2 text-[var(--text-secondary)]">Leave Balances</div>
-                <div className="menu-item p-2 text-[var(--text-secondary)]">Public Holidays</div>
-            </div>
-         </div>
-        </>
-    )
-}
+            <div className="subSidebar flex h-full w-100 flex-col gap-3 rounded-[var(--radius-md)] border border-[var(--border-color)] bg-[var(--color-sidebar)] p-4">
+                <h1 className="text-[24px] font-semibold text-[var(--text-primary)]">
+                    Leaves
+                    <br />
+                    and Attendance
+                </h1>
 
-export default SubSidebar
+                <div className="menu-items">
+                    <div className="menu-item rounded-[var(--radius-md)] bg-[var(--color-primary)] p-2 font-medium text-[var(--text-primary)]">
+                        Leave Balances
+                    </div>
+
+                    <div className="menu-item p-2 text-[var(--text-secondary)]">
+                        Leave Balances
+                    </div>
+
+                    <div className="menu-item p-2 text-[var(--text-secondary)]">
+                        Public Holidays
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default SubSidebar;

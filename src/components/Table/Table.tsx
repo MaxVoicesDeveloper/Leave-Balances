@@ -1,12 +1,29 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import human from "../../assets/human.png";
-import employees from "../../data/employees.json";
 
-const Table = () => {
+type Employee = {
+    id: number;
+    name: string;
+    designation: string;
+    al: number;
+    ph: number;
+    pdo: number | null;
+    sl: number;
+    ul: number;
+    sl_hp: number;
+    sl_up: number;
+    pl: number;
+    cl: number;
+};
+
+type TableProps = {
+    employees: Employee[];
+    collapseVersion: number;
+};
+
+const Table = ({ employees, collapseVersion }: TableProps) => {
     const [isLabelOpen, setIsLabelOpen] = useState(true);
-
     const [openGroups, setOpenGroups] = useState<number[]>([0, 1]);
-
     const [openSubgroups, setOpenSubgroups] = useState<string[]>([
         "0-0",
         "0-1",
@@ -16,6 +33,12 @@ const Table = () => {
     const formatNumber = (value: number | null) => {
         return value === null ? "0.00" : value.toFixed(2);
     };
+
+    useEffect(() => {
+        setIsLabelOpen(false);
+        setOpenGroups([]);
+        setOpenSubgroups([]);
+    }, [collapseVersion]);
 
     const groups = [
         {
@@ -61,13 +84,12 @@ const Table = () => {
     return (
         <table className="w-full border-separate border-spacing-y-1">
             <tbody>
-                {/* Label */}
                 <tr>
                     <td colSpan={13}>
                         <button
                             type="button"
                             onClick={() => setIsLabelOpen(!isLabelOpen)}
-                            className="flex w-full items-center gap-2 rounded-[8px] bg-[var(--color-primary)] px-3 py-2 text-left text-[14px] font-medium"
+                            className="flex w-full items-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-3 py-2 text-left text-[14px] font-medium"
                         >
                             <span
                                 className={`transition-transform duration-200 ${
@@ -76,13 +98,11 @@ const Table = () => {
                             >
                                 ⌃
                             </span>
-
                             Label
                         </button>
                     </td>
                 </tr>
 
-                {/* Label 2 */}
                 {isLabelOpen &&
                     groups.map((group, groupIndex) => {
                         const isGroupOpen = openGroups.includes(groupIndex);
@@ -93,10 +113,8 @@ const Table = () => {
                                     <td colSpan={13}>
                                         <button
                                             type="button"
-                                            onClick={() =>
-                                                toggleGroup(groupIndex)
-                                            }
-                                            className="flex w-full items-center gap-2 rounded-[8px] bg-[#EDDCF9] px-8 py-2 text-left text-[14px] font-medium"
+                                            onClick={() => toggleGroup(groupIndex)}
+                                            className="flex w-full items-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary-medium)] px-8 py-2 text-left text-[14px] font-medium"
                                         >
                                             <span
                                                 className={`transition-transform duration-200 ${
@@ -107,26 +125,20 @@ const Table = () => {
                                             >
                                                 ⌃
                                             </span>
-
                                             {group.label}
                                         </button>
                                     </td>
                                 </tr>
 
-                                {/* Label 3 */}
                                 {isGroupOpen &&
                                     group.subgroups.map(
                                         (subgroup, subgroupIndex) => {
                                             const subgroupKey = `${groupIndex}-${subgroupIndex}`;
                                             const isSubgroupOpen =
-                                                openSubgroups.includes(
-                                                    subgroupKey
-                                                );
+                                                openSubgroups.includes(subgroupKey);
 
                                             return (
-                                                <Fragment
-                                                    key={subgroupKey}
-                                                >
+                                                <Fragment key={subgroupKey}>
                                                     <tr>
                                                         <td colSpan={13}>
                                                             <button
@@ -136,7 +148,7 @@ const Table = () => {
                                                                         subgroupKey
                                                                     )
                                                                 }
-                                                                className="flex w-full items-center gap-2 rounded-[8px] bg-[#F7F1FC] px-14 py-2 text-left text-[14px] font-medium"
+                                                                className="flex w-full items-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary-light)] px-14 py-2 text-left text-[14px] font-medium"
                                                             >
                                                                 <span
                                                                     className={`transition-transform duration-200 ${
@@ -147,13 +159,11 @@ const Table = () => {
                                                                 >
                                                                     ⌃
                                                                 </span>
-
                                                                 {subgroup.label}
                                                             </button>
                                                         </td>
                                                     </tr>
 
-                                                    {/* Header */}
                                                     {isSubgroupOpen && (
                                                         <tr className="text-left text-[12px] font-medium text-[var(--text-secondary)]">
                                                             <th className="px-2 py-2">
@@ -196,7 +206,6 @@ const Table = () => {
                                                         </tr>
                                                     )}
 
-                                                    {/* Employees */}
                                                     {isSubgroupOpen &&
                                                         subgroup.employees.map(
                                                             (employee) => (
@@ -221,8 +230,7 @@ const Table = () => {
                                                                                 alt=""
                                                                                 className="h-7 w-7 rounded-full"
                                                                             />
-
-                                                                            <span className="text-[#A855F7]">
+                                                                            <span className="text-[var(--color-counter)]">
                                                                                 {
                                                                                     employee.name
                                                                                 }
@@ -230,7 +238,7 @@ const Table = () => {
                                                                         </div>
                                                                     </td>
 
-                                                                    <td className="border-b border-[var(--border-color)] w-[173px] px-2 text-[var(--text-primary)]">
+                                                                    <td className="w-[173px] border-b border-[var(--border-color)] px-2 text-[var(--text-primary)]">
                                                                         {
                                                                             employee.designation
                                                                         }

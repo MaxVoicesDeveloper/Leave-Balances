@@ -2,21 +2,33 @@
 @import "tailwindcss";
 
 :root {
+  /* Colors */
   --color-background: #ffffff;
   --color-sidebar: #f8f9fa;
   --color-foreground: #171717;
   --color-muted: #6b7280;
   --color-border: #e5e7eb;
-  --color-primary: #F0E1FD;
+
+  --color-primary: #f0e1fd;
+  --color-primary-light: #f7f1fc;
+  --color-primary-medium: #eddcf9;
+  --color-counter: #a855f7;
+
+  --text-primary: #1d1d1f;
   --text-secondary: #737373;
-  --text-primary: #1D1D1F;
-  --primary-gradient: linear-gradient(90deg, #9134EA 0%, #5246E6 100%);
-  --color-counter: #A855F7;
-  --border-color: #F0F0F0;
-  --bg-main: #F5F5F5;
+
+  --border-color: #f0f0f0;
+  --bg-main: #f5f5f5;
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(90deg, #9134ea 0%, #5246e6 100%);
+
+  /* Radius */
   --radius-sm: 4px;
-  --radius-md: 8px; 
+  --radius-md: 8px;
   --radius-lg: 12px;
+
+  /* Layout */
   --width-icon: 41px;
   --sidebar-width: 333px;
   --content-width: 1057px;

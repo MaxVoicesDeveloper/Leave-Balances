@@ -1,6 +1,7 @@
 import Sidebar from "./components/Sidebar/Sidebar.tsx"
 import SubSidebar from "./components/subSidebar/subSidebar.tsx"
 import LeaveBalances from "./components/LeaveBalances/LeaveBalances.tsx"
+
 const App = () => {
   return (
     <div className="flex min-h-screen bg-[var(--color-background)]">
@@ -14,6 +15,7 @@ const App = () => {
       <main className="w-full bg-[var(--bg-main)]">
         <div className="p-[var(--spacing-page)]">
           <LeaveBalances/>
+
         </div>
       </main>
     </div>
